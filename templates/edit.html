@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Edit User</h2>
+
+<form method="POST" action="/update/{{ user[0] }}">
+    <div class="mb-3">
+        <input type="text" name="name" class="form-control" value="{{ user[1] }}" required>
+    </div>
+    <div class="mb-3">
+        <input type="email" name="email" class="form-control" value="{{ user[2] }}" required>
+    </div>
+    <button class="btn btn-success">Update</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock %}

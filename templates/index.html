@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">User Management</h2>
+
+<form method="POST" action="/add" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="name" class="form-control" placeholder="Name" required>
+    </div>
+    <div class="col-md-4">
+        <input type="email" name="email" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary w-100">Add User</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>
+                <a href="/edit/{{ user[0] }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/delete/{{ user[0] }}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Delete user?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
